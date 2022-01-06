@@ -1,0 +1,21 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About me",
+      "description": "I am not a self-abased person, but I am literaly nothing but a trash : )",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-06T20:45:21+08:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Visual Analytics--ISSS608",
+      "description": "Welcome to the website. I hope you enjoy it! Am I?\n",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-06T20:45:22+08:00"
+    }
+  ],
+  "collections": []
+}
