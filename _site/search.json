@@ -2,11 +2,11 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About me",
-      "description": "I am not a self-abased person, but I am literaly nothing but a trash : )",
+      "title": "ISSS608",
+      "description": "MITB ISSS608 Visual Analytics Page.",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-01-06T20:45:21+08:00"
+      "last_modified": "2022-01-29T15:52:40+08:00"
     },
     {
       "path": "index.html",
@@ -14,7 +14,7 @@
       "description": "Welcome to the website. I hope you enjoy it! Am I?\n",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-01-06T20:45:22+08:00"
+      "last_modified": "2022-01-29T15:52:53+08:00"
     }
   ],
   "collections": []

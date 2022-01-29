@@ -1,7 +1,7 @@
 ---
-title: "About me"
+title: "ISSS608"
 description: |
-  I am not a self-abased person, but I am literaly nothing but a trash u: )
+  MITB ISSS608 Visual Analytics Page.
 ---
 
 ```{r setup, include=FALSE}
