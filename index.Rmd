@@ -1,7 +1,7 @@
 ---
 title: "Visual Analytics--ISSS608"
 description: |
-  This website consists of a collection of works done for courses ISSS608 Visual Analytics in MITB program. 
+  This website consists of a collection of works done for courses ISSS608 Visual Analytics in MITB program.
 site: distill::distill_website
 ---
 
