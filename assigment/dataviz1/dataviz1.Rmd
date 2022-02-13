@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Introduction 
  <font size=5pt> The data visualization below is created by using data on Resident Labour Force Participation Rate by Age and Sex provided by Ministrty of Manpower, Singapore (MOM).The data provide us basic statistical number like the resident labour force participation rate by age and sex from 1991-2021 in Singapore for audience to do further discussion and analysis. 
 
-<p>The chart we need to revise is displayed below:![Alt text](p/1.png) 
+<p>The chart we need to revise is displayed below:![Alt text](p/n.png) 
 
 
 # Critque on Clarity and Aesthetics
