@@ -1,0 +1,30 @@
+---
+title: "DataViz Makeove 1"
+author: "Jiang Mingjun"
+date: "2022/2/13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+    
+
+## Introduction 
+The data visualisation below is created by using data data on Resident Labour Force Participation Rate by Age and Sex.provided by Ministrty of Manpower, Singapore (MOM). 
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
