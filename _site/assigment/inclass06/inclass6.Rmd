@@ -1,0 +1,135 @@
+---
+title: "inclass06"
+author: "Jiang Mingjun"
+date: "2022/2/19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r library}
+packages = c('scales', 'viridis', 
+             'lubridate', 'ggthemes', 
+             'gridExtra', 'tidyverse', 
+             'readxl', 'knitr',
+             'data.table')
+for (p in packages){
+  if(!require(p, character.only = T)){
+    install.packages(p)
+  }
+  library(p,character.only = T)
+}
+```
+
+```{r data importing}
+attacks <- read_csv("data/eventlog.csv")
+```
+
+```{r data examining}
+kable(head(attacks))
+
+```
+```{r  finding day and hour }
+make_hr_wkday <- function(ts, sc, tz) {
+  real_times <- ymd_hms(ts, 
+                        tz = tz[1], 
+                        quiet = TRUE)
+  dt <- data.table(source_country = sc,
+                   wkday = weekdays(real_times),
+                   hour = hour(real_times))
+  return(dt)
+}
+```
+
+```{r define the order}
+wkday_levels <- c('Sunday', 'Monday', 
+                  'Tuesday', 'Wednesday', 
+                  'Thursday', 'Friday', 
+                  'Saturday')
+attacks <- attacks %>%
+  group_by(tz) %>%
+  do(make_hr_wkday(.$timestamp, 
+                   .$source_country, 
+                   .$tz ) ) %>% 
+  ungroup() %>% 
+  mutate(wkday = factor(wkday, 
+                        levels = wkday_levels),
+         hour  = factor(hour, 
+                        levels = 0:23))
+```
+
+```{r data examining}
+kable(head(attacks))
+
+```
+```{r calender heatmap}
+grouped <- attacks %>% 
+  count(wkday, hour) %>% 
+  ungroup()
+ggplot(grouped, 
+       aes(hour, 
+           wkday, 
+           fill = n)) + 
+geom_tile(color = "white",    ## color changing
+          size = 0.1) + 
+theme_tufte(base_family = "Helvetica") + 
+coord_equal() + 
+scale_fill_viridis(name = "# of Events", 
+                   label = comma) + 
+labs(x = NULL, 
+     y = NULL, 
+     title = "Events per day of week & time of day") +
+theme(axis.ticks = element_blank(),
+      plot.title = element_text(hjust = 0.5),
+      legend.title = element_text(size = 8),
+      legend.text = element_text(size = 6) )
+```
+
+
+```{r importing arrival by air}
+air <- read_excel("data/arrivals_by_air.xlsx")
+```
+
+
+```{r} 
+air$month <- factor(month(air$`Month-Year`), ##转换成年和月 
+                    levels=1:12, 
+                    labels=month.abb, #月份缩写 month abbreviation
+                    ordered=TRUE) 
+air$year <- year(ymd(air$`Month-Year`))    ##ymd stands for year/moth/day  
+```
+
+
+
+```{r}
+New_Zealand <- air %>% 
+  select(`New Zealand`, 
+         month, 
+         year) %>%
+  filter(year >= 2010)
+```
+```{r}
+hline.data <- New_Zealand %>%    ###compute average by month rather than year
+  group_by(month) %>%
+  summarise(avgvalue = mean(`New Zealand`))
+
+```
+
+```{r}
+ggplot() + 
+  geom_line(data=New_Zealand,
+            aes(x=year, 
+                y=`New Zealand`, 
+                group=month), 
+            colour="black") +        
+  geom_hline(aes(yintercept=avgvalue),     ##reference line(red line)
+             data=hline.data, 
+             linetype=6, 
+             colour="red", 
+             size=0.5) + 
+  facet_grid(~month) +   ###独立的表格 by month
+  labs(axis.text.x = element_blank()) +    
+  xlab("") +
+  ylab("No. of Visitors")  ##x轴年份要调整 年份一个在上一个在下  调整
+```
