@@ -16,6 +16,8 @@ navbar:
         href: "assigment/takehome01/takehome1.html"
       - text: "Take-home Exercise 2"
         href: "assigment/takehome02/takehome2.html"
+      - text: "Take-home Exercise 3"
+        href: "assigment/takehome03/takehome3.html"
     - text: "DataViz Makeover"
       menu:
       - text: "DataViz 1"
